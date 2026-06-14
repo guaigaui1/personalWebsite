@@ -96,7 +96,7 @@ export const en: Dictionary = {
     title: "Projects",
     items: [
       {
-        name: "智能助手小丰 (Xiaofeng — Intelligent Assistant)",
+        name: "智能客服小丰 (Xiaofeng — Intelligent Assistant)",
         period: "2026.02 - 2026.06",
         intro:
           "End-to-end RAG system covering document ingestion, chunking, vector storage, multi-source retrieval, intent routing, and streaming dialogue.",
@@ -114,22 +114,22 @@ export const en: Dictionary = {
           {
             title: "Document Parsing & Chunking",
             description:
-              "Multi-format ingestion via MinerU; sliding window overlap + parent-child chunking lifted recall completeness from 75% to 90%+.",
+              "Integrated MinerU for unified ingestion of PDF/Markdown/DOC/Excel and other formats; added sliding-window overlap + parent-child chunking to fix retrieval loss caused by fixed-size splits cutting across semantics, lifting recall completeness from ~75% to over 90%.",
           },
           {
             title: "Intent Recognition",
             description:
-              "6-class intent classification + structured entity extraction; accuracy reached 98% with CoT and Few-shot.",
+              "Built 6-class intent classification and structured entity extraction on an LLM; with CoT and Few-shot optimizations, intent recognition accuracy reached 98%.",
           },
           {
             title: "Query Rewriting & Routing",
             description:
-              "4-dimensional Query Rewriting (concise / abstract / correction / normalization); the query router dispatches requests to Elasticsearch / MySQL / Neo4j with automatic fallback.",
+              "Implemented 4-dimensional Query Rewriting (concise / abstract / correction / normalization); the query router dispatches each Query to Elasticsearch / MySQL / Neo4j with automatic fallback on failure.",
           },
           {
             title: "Hybrid Retrieval & Reranking",
             description:
-              "Elasticsearch BM25 + vector semantic search; RRF fusion; BGE-RERANKER on ONNX Runtime for zero-latency reranking; Top5 recall from 82% to 96%.",
+              "Built hybrid retrieval with Elasticsearch BM25 + vector semantic search, fusing multi-source rankings via the RRF algorithm; loaded BGE-RERANKER on ONNX Runtime to rerank results with zero network latency. Top5 recall rose from 82% to 96%.",
           },
         ],
       },
@@ -152,22 +152,22 @@ export const en: Dictionary = {
           {
             title: "Deep Research Engine",
             description:
-              "Four-stage autonomous research paradigm with role-specific prompts (Planner / Executor / Critic); dependency-based parallel / serial hybrid scheduling.",
+              "Implemented a four-stage autonomous research paradigm; each stage uses a role-specific Prompt (Planner / Executor / Critic) for clear responsibilities; within the Plan-Execute-Critique loop, tasks are grouped by dependency for mixed parallel / serial scheduling.",
           },
           {
             title: "Dynamic Context Engineering",
             description:
-              "Progressive tool loading by scanning local directories for skill.md; priority-based context compression retains goals, tool outputs, and critic feedback when iterations exceed limits.",
+              "Scans the local file directory to read skill.md, wrapping each skill as a tool for progressive loading; a smart compression strategy keeps user goals, tool results, and critic feedback by priority when iterations exceed the limit, discarding redundant dialogue.",
           },
           {
             title: "Multi-instance Task Management",
             description:
-              "Redis distributed locks enforce single-instance-per-session; Pub/Sub broadcast for graceful stop; TTL auto-renewal keeps long-task state alive.",
+              "Uses Redis distributed locks to keep a single instance per session task, Pub/Sub broadcast to stop all instances, and TTL auto-renewal so long-running tasks never lose state.",
           },
           {
             title: "Staged Streaming Output",
             description:
-              "SSE real-time push via Project Reactor (Flux / Mono / Sinks); supports four message types — thinking / text / reference / recommend.",
+              "Built on Project Reactor (Flux / Mono / Sinks) for real-time SSE push, streaming four message types — thinking / text / reference / recommend — to the frontend stage by stage.",
           },
         ],
       },
@@ -178,7 +178,8 @@ export const en: Dictionary = {
     items: [
       { icon: "trophy", name: "1st Prize, 15th Provincial Mathematics Competition" },
       { icon: "award", name: "Graduate Freshman Scholarship (3rd Class), 2024" },
-      { icon: "badge-check", name: "Passed CET-4 and CET-6" },
+      // 不间断连字符（U+2011）避免 CET‑6 在换行处被拆成 "CET-" / "6"
+      { icon: "badge-check", name: "Passed CET‑4 and CET‑6" },
     ],
   },
   contact: {

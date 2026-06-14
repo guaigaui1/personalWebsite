@@ -26,12 +26,16 @@ export function Hero() {
           {t.hero.greeting}
         </motion.p>
 
-        {/* 姓名逐字揭起 */}
-        <h1 className="mt-2 text-6xl font-bold tracking-tight text-foreground sm:text-7xl">
+        {/* 姓名逐字揭起：英文名更长，降一档避免撑满行 */}
+        <h1
+          className={`mt-2 font-bold tracking-tight text-foreground ${
+            locale === "en" ? "text-5xl sm:text-6xl" : "text-6xl sm:text-7xl"
+          }`}
+        >
           <span className="sr-only">{t.hero.name}</span>
-          <span aria-hidden className="flex flex-wrap justify-center">
+          <span aria-hidden className="-mb-[0.18em] flex flex-wrap justify-center">
             {chars.map((ch, i) => (
-              <span key={i} className="inline-block overflow-hidden">
+              <span key={i} className="inline-block overflow-hidden pb-[0.18em]">
                 <motion.span
                   className="inline-block"
                   initial={{ y: "110%" }}
@@ -67,17 +71,20 @@ export function Hero() {
           initial={{ opacity: 0, y: 12 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, ease: EASE, delay: 0.55 }}
-          className="mt-10 flex flex-wrap items-stretch justify-center gap-4"
+          className="mt-10 grid w-full max-w-lg grid-cols-3 gap-3"
         >
           {t.hero.metrics.map((m) => (
             <div
               key={m.label}
-              className="min-w-[8rem] rounded-2xl border border-border bg-card px-6 py-4 shadow-sm"
+              className="rounded-2xl border border-border bg-card px-3 py-4 shadow-sm sm:px-6"
             >
-              <p className="font-mono text-3xl font-bold text-accent">
+              <p className="font-mono text-3xl font-bold text-accent sm:text-4xl">
                 <CountUp to={m.value} suffix={m.suffix} />
               </p>
-              <p className="mt-1 text-sm text-muted-foreground">{m.label}</p>
+              {/* text-balance 让中文标签按字数均分换行，避免掉单字孤行 */}
+              <p className="mt-1 text-sm leading-snug text-balance text-muted-foreground">
+                {m.label}
+              </p>
             </div>
           ))}
         </motion.div>
@@ -86,12 +93,12 @@ export function Hero() {
           initial={{ opacity: 0, y: 12 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, ease: EASE, delay: 0.65 }}
-          className="mt-10 flex flex-col gap-4 sm:flex-row"
+          className="mt-10 flex w-full flex-col gap-4 sm:w-auto sm:flex-row"
         >
           <motion.a
             href="#projects"
             {...buttonTap}
-            className="inline-flex items-center justify-center rounded-full bg-primary px-6 py-3 text-base font-medium text-primary-foreground"
+            className="inline-flex w-full items-center justify-center rounded-full bg-primary px-6 py-3 text-base font-medium text-primary-foreground sm:w-auto"
           >
             {t.hero.viewProjects}
           </motion.a>
@@ -99,7 +106,7 @@ export function Hero() {
             href={resumeHref}
             download
             {...buttonTap}
-            className="inline-flex items-center justify-center rounded-full border border-primary/40 px-6 py-3 text-base font-medium text-foreground"
+            className="inline-flex w-full items-center justify-center rounded-full border border-primary/40 px-6 py-3 text-base font-medium text-foreground sm:w-auto"
           >
             {t.hero.downloadResume}
           </motion.a>

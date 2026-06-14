@@ -29,10 +29,10 @@ export function Navbar() {
       className={`fixed inset-x-0 top-0 z-50 backdrop-blur-md transition-colors duration-300 ${
         scrolled
           ? "bg-background/95 border-b border-primary/20 shadow-sm"
-          : "bg-background/80"
+          : "bg-background/60"
       }`}
     >
-      <nav className="mx-auto flex h-16 max-w-6xl items-center justify-between px-6">
+      <nav className="mx-auto flex h-16 max-w-4xl items-center justify-between px-6">
         <a href="#" className="flex items-center gap-2" aria-label="WG">
           <span className="flex h-9 w-9 items-center justify-center rounded-full bg-primary text-sm font-bold text-primary-foreground">
             WG

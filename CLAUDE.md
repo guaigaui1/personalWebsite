@@ -14,7 +14,7 @@
 - 期望效果：访问者在 30 秒内能感知到候选人的技术深度
 
 **核心卖点（按优先级）**
-1. 两个完整的大模型应用项目（智能助手小丰、dodo-Agent）
+1. 两个完整的大模型应用项目（智能客服小丰、dodo-Agent）
 2. 西安电子科技大学硕士 · ISN 国家重点实验室背景
 3. 全栈式后端能力（Java/Spring 生态 + 中间件 + 大模型工程）
 
@@ -60,7 +60,7 @@
 projects: [
   {
     id: "xiaofeng",
-    name: "智能助手小丰",  // 英文版保持中文名 + 拼音注解
+    name: "智能客服小丰",  // 英文版保持中文名 + 拼音注解
     nameEn: "Xiaofeng — Intelligent Assistant",
     period: "2026.02 - 2026.06",
     intro: {
@@ -69,21 +69,22 @@ projects: [
     },
     techStack: ["Spring Boot", "LangChain4j", "Elasticsearch", "Neo4j", "Redis", "MySQL", "MinIO", "MinerU"],
     highlights: [
+      // 描述用简历原句，不得二次总结
       {
-        zh: "文档解析与分段：MinerU 多格式接入；滑动窗口重叠 + 父子分段方案；召回完整度 75% → 90%+",
-        en: "Document parsing: multi-format ingestion via MinerU; sliding window overlap + parent-child chunking lifted recall completeness from 75% to 90%+",
+        zh: "文档解析与分段：引入 MinerU，支持 PDF/Markdown/DOC/Excel 等多格式统一接入；引入滑动窗口重叠 + 父子分段方案，解决固定分片截断语义导致检索丢失的问题，召回完整度从约 75% 提升至 90% 以上",
+        en: "Document Parsing & Chunking: integrated MinerU for unified ingestion of PDF/Markdown/DOC/Excel and other formats; added sliding-window overlap + parent-child chunking to fix retrieval loss caused by fixed-size splits cutting across semantics, lifting recall completeness from ~75% to over 90%",
       },
       {
-        zh: "意图识别优化：6 大意图分类 + 结构化实体提取；CoT、Few-shot 优化后准确率达 98%",
-        en: "Intent recognition: 6-class classification + structured entity extraction; accuracy reached 98% with CoT and Few-shot",
+        zh: "意图识别优化：基于 LLM 实现 6 大意图分类识别及结构化实体提取，通过 CoT、Few-shot 等优化手段，意图识别准确率提升到 98%",
+        en: "Intent Recognition: built 6-class intent classification and structured entity extraction on an LLM; with CoT and Few-shot optimizations, intent recognition accuracy reached 98%",
       },
       {
-        zh: "查询改写与智能路由：4 维 Query Rewriting（简洁化/抽象化/纠错/标准化）；查询路由至 Elasticsearch / MySQL / Neo4j，失败自动降级",
-        en: "4-dimensional Query Rewriting (concise/abstract/correction/normalization); query router dispatches to Elasticsearch / MySQL / Neo4j with automatic fallback",
+        zh: "查询改写与智能路由：实现 4 维 Query Rewriting（简洁化/抽象化/纠错/标准化）；查询路由器将 Query 分发至 ES 检索 / MySQL / Neo4j，失败自动降级",
+        en: "Query Rewriting & Routing: implemented 4-dimensional Query Rewriting (concise/abstract/correction/normalization); the query router dispatches each Query to Elasticsearch / MySQL / Neo4j with automatic fallback on failure",
       },
       {
-        zh: "混合检索与精排序：Elasticsearch BM25 + 向量语义检索；RRF 融合；ONNX Runtime 加载 BGE-RERANKER 零网络延迟精排；Top5 召回率 82% → 96%",
-        en: "Hybrid retrieval with Elasticsearch BM25 + vector search; RRF fusion; BGE-RERANKER on ONNX Runtime for zero-latency reranking; Top5 recall from 82% to 96%",
+        zh: "混合检索与精排序：ES BM25 + 向量语义检索构建混合检索，RRF 算法融合多源排序；基于 ONNX Runtime 加载 BGE-RERANKER 模型，零网络延迟完成检索结果精排。Top5 召回率从 82% 提升至 96%",
+        en: "Hybrid Retrieval & Reranking: built hybrid retrieval with Elasticsearch BM25 + vector semantic search, fusing multi-source rankings via the RRF algorithm; loaded BGE-RERANKER on ONNX Runtime to rerank results with zero network latency. Top5 recall rose from 82% to 96%",
       },
     ],
   },
@@ -99,20 +100,20 @@ projects: [
     techStack: ["Spring AI", "Project Reactor", "MCP", "Elasticsearch", "MySQL", "Redis", "MinIO", "通义千问"],
     highlights: [
       {
-        zh: "深度研究引擎：四阶段自主研究范式，独立角色 Prompt（规划/执行/评审专家）；按任务依赖分组实现并行/串行混合调度",
-        en: "Deep research engine: four-stage autonomous paradigm with role-specific prompts (Planner/Executor/Critic); dependency-based parallel/serial scheduling",
+        zh: "深度研究引擎：实现四阶段自主研究范式，每阶段使用独立角色 Prompt（规划/执行/评审专家）确保职责清晰；计划-执行-批判循环中按任务依赖分组实现并行/串行混合调度",
+        en: "Deep Research Engine: implemented a four-stage autonomous research paradigm; each stage uses a role-specific Prompt (Planner/Executor/Critic) for clear responsibilities; within the Plan-Execute-Critique loop, tasks are grouped by dependency for mixed parallel/serial scheduling",
       },
       {
-        zh: "动态上下文工程：扫描本地目录读取 skill.md 渐进式加载工具；多轮迭代超限时按优先级保留目标、工具结果、批判反馈",
-        en: "Dynamic context engineering: progressive skill.md loading; priority-based context compression retains goals, tool outputs, and critic feedback",
+        zh: "动态上下文工程：扫描本地文件目录读取 skill.md，封装 skill 为工具，渐进式加载；设计智能压缩策略，多轮迭代超限时按优先级保留用户目标、工具执行结果、批判反馈，丢弃冗余对话过程",
+        en: "Dynamic Context Engineering: scans the local file directory to read skill.md, wrapping each skill as a tool for progressive loading; a smart compression strategy keeps user goals, tool results, and critic feedback by priority when iterations exceed the limit, discarding redundant dialogue",
       },
       {
-        zh: "多实例任务管理：Redis 分布式锁保证单会话单实例；Pub/Sub 广播停止；TTL 自动续期保障长任务状态",
-        en: "Multi-instance task management: Redis distributed locks for single-instance-per-session; Pub/Sub broadcast for graceful stop; TTL auto-renewal for long tasks",
+        zh: "多实例任务管理：通过 Redis 分布式锁实现同一会话任务只有一个实例，Pub/Sub 广播实现停止所有实例，TTL 自动续期实现长任务不丢失任务状态",
+        en: "Multi-instance Task Management: uses Redis distributed locks to keep a single instance per session task, Pub/Sub broadcast to stop all instances, and TTL auto-renewal so long-running tasks never lose state",
       },
       {
-        zh: "分阶段流式输出：Project Reactor (Flux/Mono/Sinks) 实现 SSE 实时推送；支持 thinking/text/reference/recommend 四种消息类型",
-        en: "Staged streaming output: SSE via Project Reactor (Flux/Mono/Sinks); supports four message types — thinking/text/reference/recommend",
+        zh: "分阶段流式输出：基于 Project Reactor (Flux/Mono/Sinks) 实现 SSE 实时推送，支持 thinking/text/reference/recommend 四种消息类型逐阶段推送给前端",
+        en: "Staged Streaming Output: built on Project Reactor (Flux/Mono/Sinks) for real-time SSE push, streaming four message types — thinking/text/reference/recommend — to the frontend stage by stage",
       },
     ],
   },
@@ -142,7 +143,7 @@ projects: [
 
 ### 4.1 色彩 Token
 
-定义在 `src/lib/theme.ts`，同步到 `tailwind.config.ts`。**禁止在组件里使用未定义的颜色字面量**。
+定义在 `src/lib/theme.ts`，同步到 `src/app/globals.css` 的 `@theme` / `:root`（Tailwind v4 无 `tailwind.config.ts`）。**禁止在组件里使用未定义的颜色字面量**。
 
 ```ts
 export const theme = {
@@ -179,7 +180,11 @@ font-family: 'Inter', 'PingFang SC', 'Microsoft YaHei', sans-serif;
 - 正文：`text-base`（16px）
 - 次要：`text-sm`（14px）
 
+**正文一律小四 `text-base`（16px）**：项目描述、关于我等承载阅读内容的正文禁止用 `text-sm`(14px)，`text-sm` 只用于 period、标签、meta 等真·次要信息。
+
 **禁止**字号小于 `text-xs`（12px）。
+
+中文文本块若易在窄容器掉单字孤行（如指标卡标签、荣誉名），用 `text-balance` 让其按字数均分换行。
 
 ### 4.3 间距与圆角
 
@@ -194,6 +199,7 @@ font-family: 'Inter', 'PingFang SC', 'Microsoft YaHei', sans-serif;
 - 悬停效果：`scale-105` + 阴影，过渡 `0.2s`
 - 切换语言：整页 `AnimatePresence` 淡出淡入 `0.2s`
 - **禁止**过度炫技：不用粒子效果、不用 3D 旋转、不用视差滚动（除非用户明确要求）
+- 文字揭起类 `overflow-hidden` 包裹动画必须为字形下伸部（`g`/`y`/`p` 等）留出 `pb`（如 `pb-[0.18em]`，外层用等量 `-mb` 抵消），否则英文字母下缘会被裁切
 
 ---
 
@@ -385,7 +391,7 @@ Remotion 动画里的所有颜色必须从 `src/lib/theme.ts` 导入，禁止硬
 ```ts
 // 中文版
 title: "张文冠 | 大模型应用开发工程师"
-description: "西安电子科技大学硕士，专注 RAG 与 Agent 系统开发。代表作：智能助手小丰、dodo-Agent。"
+description: "西安电子科技大学硕士，专注 RAG 与 Agent 系统开发。代表作：智能客服小丰、dodo-Agent。"
 keywords: ["张文冠", "大模型应用开发", "RAG", "Agent", "LangChain4j", "Spring AI", "西电"]
 
 // 英文版
@@ -407,6 +413,7 @@ description: "M.S. at Xidian University, focused on RAG and Agent systems. Proje
 - 数字用阿拉伯数字（"4 维"、"98%"）
 - 中英文之间加空格（"基于 LLM 实现"，不是"基于LLM实现"）
 - 项目描述强调"做了什么 + 效果数据"，避免空话
+- **项目 highlight 描述必须使用简历原句，不得二次总结/精简**；英文版改写为忠于原句的完整翻译（术语大小写按官方写法）
 
 ### 10.2 英文
 

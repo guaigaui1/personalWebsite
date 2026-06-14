@@ -96,7 +96,7 @@ export const zh: Dictionary = {
     title: "项目经历",
     items: [
       {
-        name: "智能助手小丰",
+        name: "智能客服小丰",
         period: "2026.02 - 2026.06",
         intro:
           "基于 RAG 架构，实现从文档接入、切片、向量化存储到多源检索、意图路由、流式对话的全链路。",
@@ -114,22 +114,22 @@ export const zh: Dictionary = {
           {
             title: "文档解析与分段",
             description:
-              "MinerU 多格式接入；滑动窗口重叠 + 父子分段方案；召回完整度 75% → 90%+。",
+              "引入 MinerU，支持 PDF/Markdown/DOC/Excel 等多格式统一接入；引入滑动窗口重叠 + 父子分段方案，解决固定分片截断语义导致检索丢失的问题，召回完整度从约 75% 提升至 90% 以上。",
           },
           {
             title: "意图识别优化",
             description:
-              "6 大意图分类 + 结构化实体提取；CoT、Few-shot 优化后准确率达 98%。",
+              "基于 LLM 实现 6 大意图分类识别及结构化实体提取，通过 CoT、Few-shot 等优化手段，意图识别准确率提升到 98%。",
           },
           {
             title: "查询改写与智能路由",
             description:
-              "4 维 Query Rewriting（简洁化 / 抽象化 / 纠错 / 标准化）；查询路由器将请求分发至 Elasticsearch / MySQL / Neo4j，失败自动降级。",
+              "实现 4 维 Query Rewriting（简洁化 / 抽象化 / 纠错 / 标准化）；查询路由器将 Query 分发至 ES 检索 / MySQL / Neo4j，失败自动降级。",
           },
           {
             title: "混合检索与精排序",
             description:
-              "Elasticsearch BM25 + 向量语义检索；RRF 融合；ONNX Runtime 加载 BGE-RERANKER 实现零网络延迟精排；Top5 召回率 82% → 96%。",
+              "ES BM25 + 向量语义检索构建混合检索，RRF 算法融合多源排序；基于 ONNX Runtime 加载 BGE-RERANKER 模型，零网络延迟完成检索结果精排。Top5 召回率从 82% 提升至 96%。",
           },
         ],
       },
@@ -152,22 +152,22 @@ export const zh: Dictionary = {
           {
             title: "深度研究引擎",
             description:
-              "四阶段自主研究范式，独立角色 Prompt（规划 / 执行 / 评审专家）；按任务依赖分组实现并行 / 串行混合调度。",
+              "实现四阶段自主研究范式，每阶段使用独立角色 Prompt（规划 / 执行 / 评审专家）确保职责清晰；计划-执行-批判循环中按任务依赖分组实现并行 / 串行混合调度。",
           },
           {
             title: "动态上下文工程",
             description:
-              "扫描本地目录读取 skill.md 渐进式加载工具；多轮迭代超限时按优先级保留目标、工具结果、批判反馈。",
+              "扫描本地文件目录读取 skill.md，封装 skill 为工具，渐进式加载；设计智能压缩策略，多轮迭代超限时按优先级保留用户目标、工具执行结果、批判反馈，丢弃冗余对话过程。",
           },
           {
             title: "多实例任务管理",
             description:
-              "Redis 分布式锁保证单会话单实例；Pub/Sub 广播停止；TTL 自动续期保障长任务状态。",
+              "通过 Redis 分布式锁实现同一会话任务只有一个实例，Pub/Sub 广播实现停止所有实例，TTL 自动续期实现长任务不丢失任务状态。",
           },
           {
             title: "分阶段流式输出",
             description:
-              "Project Reactor（Flux / Mono / Sinks）实现 SSE 实时推送；支持 thinking / text / reference / recommend 四种消息类型。",
+              "基于 Project Reactor（Flux / Mono / Sinks）实现 SSE 实时推送，支持 thinking / text / reference / recommend 四种消息类型逐阶段推送给前端。",
           },
         ],
       },
@@ -178,7 +178,7 @@ export const zh: Dictionary = {
     items: [
       { icon: "trophy", name: "第十五届数学竞赛省级一等奖" },
       { icon: "award", name: "2024 级硕士研究生三等新生奖学金" },
-      { icon: "badge-check", name: "CET-4 / CET-6 通过" },
+      { icon: "badge-check", name: "CET‑4 / CET‑6 通过" },
     ],
   },
   contact: {

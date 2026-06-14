@@ -30,17 +30,18 @@ export function Contact() {
   ];
 
   return (
-    <section id="contact" className="scroll-mt-16 px-6 py-24">
-      <div className="mx-auto max-w-3xl text-center">
+    <section id="contact" className="scroll-mt-16 px-6 py-20 sm:py-28">
+      <div className="mx-auto max-w-4xl">
         <motion.div
           initial={{ opacity: 0, y: 12 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.3 }}
           transition={{ duration: 0.6, ease: EASE }}
         >
-          <h2 className="text-4xl font-bold text-foreground">
+          <h2 className="text-4xl font-bold tracking-tight text-foreground sm:text-5xl">
             {t.contact.title}
           </h2>
+          <div className="mt-4 h-1 w-12 rounded-full bg-primary" />
           <p className="mt-4 text-base text-muted-foreground">
             {t.contact.subtitle}
           </p>
@@ -51,7 +52,7 @@ export function Contact() {
           initial="initial"
           whileInView="animate"
           viewport={{ once: true, amount: 0.2 }}
-          className="mt-12 grid gap-4 sm:grid-cols-3"
+          className="mt-10 grid gap-4 sm:grid-cols-3"
         >
           {items.map(({ icon: Icon, label, value, href }) => (
             <motion.a
@@ -62,7 +63,7 @@ export function Contact() {
               variants={staggerItem}
               whileHover={cardHover.whileHover}
               transition={cardHover.transition}
-              className="flex flex-col items-center gap-2 rounded-2xl border border-border bg-card p-6 shadow-sm transition-shadow hover:border-primary/40 hover:shadow-lg"
+              className="flex flex-col items-start gap-2 rounded-2xl border border-border bg-card p-6 shadow-sm transition-shadow hover:border-primary/40 hover:shadow-lg"
             >
               <span className="flex h-10 w-10 items-center justify-center rounded-full bg-primary/10 text-primary">
                 <Icon className="h-5 w-5" />
